@@ -1,16 +1,20 @@
 import React from "react";
+import { FieldHookConfig, useField } from 'formik';
 import InputRange from "../input-range";
 import InputText from "../input-text";
 import "./style.scss";
 
 type PropsType = {
-  value: string;
+  view: string;
   lable: string
   mark: string;
   onChange: () => void;
+  fieldName: any,
 };
 
 const FormField: React.FC<PropsType> = (props) => {
+
+  const [field, meta, helpers] = useField(props.fieldName);
 
   const rangeChange = (e: any) => {
     let min = e.target.min;
@@ -20,12 +24,15 @@ const FormField: React.FC<PropsType> = (props) => {
     e.target.style.backgroundSize = `${result}% 100%`;
     console.log(e.target.value);
   };
+
+  // console.log(field);
+  
   
   return (
     <div className="Form-field" >
       <label className="Form-field__lable">{props.lable}</label>
       <div className="Form-field__inputs-wrapper">
-        <InputText value={props.value} mark={props.mark}/>
+        <InputText view={props.view} mark={props.mark} formikProps={field}/>
         <InputRange />
       </div>
     </div>

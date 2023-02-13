@@ -1,22 +1,53 @@
-import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
+import React, { KeyboardEvent, DetailedHTMLProps, InputHTMLAttributes, useCallback, useState } from "react";
 import "./style.scss";
 
 // тип пропсов обычного инпута
-type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+type DefaultInputPropsType = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 type PropsType = DefaultInputPropsType & {
-  value: string;
+  view: string;
   mark: string;
+  formikProps: any;
 };
 
-const InputText: React.FC<PropsType> = ({value, mark, ...restProps}) => {
+const InputText: React.FC<PropsType> = ({
+  view,
+  mark,
+  formikProps,
+  ...restProps
+}) => {
+  const [editMode, setEditMode] = useState(false);
+
+  const { onChange } = formikProps.onChange;
   
+  const callbacks = {
+    onClick: useCallback(() => setEditMode(prev => !prev), []),
+
+    onBlur: useCallback(() => setEditMode(false), []),
+    
+    onKeyDown: useCallback(
+      (e: KeyboardEvent<HTMLInputElement>) => {
+      e.key === 'Enter' && callbacks.onBlur();
+      onChange(e);
+    }, [onChange]),
+  }
+
   return (
-    <div className="Input-text" >
-      <input
-        type="text"
-        value={value}
-        {...restProps}
-      />
+    <div className="Input-text" onClick={callbacks.onClick}>
+      {
+        editMode 
+        ? <input
+            type="text"
+            {...restProps}
+            {...formikProps}
+            autoFocus
+            onBlur={callbacks.onBlur}
+            onKeyDown={callbacks.onKeyDown}
+          />
+        : <span className="Input-text__view">{view}</span>
+      }
       <span className="Input-text__mark">{mark}</span>
     </div>
   );
