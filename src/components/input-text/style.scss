@@ -1,0 +1,21 @@
+.Input-text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & input {
+    height: inherit;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color: var(--font-color-grey);
+  }
+
+  & .Input-text__mark {
+    font-size: 30px;
+    line-height: 36px;
+    color: var(--font-color-grey);
+  }
+}

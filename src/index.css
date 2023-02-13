@@ -82,7 +82,5 @@ textarea,
 label,
 input {
   font-family: var(--nekst);
-  font-style: normal;
-  font-weight: 900;
   color: var(--font-color-secondary);
 }
