@@ -1,29 +1,32 @@
-import React from "react";
+import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
 import "./style.scss";
 
-type PropsType = {
-  // value: number;
+// тип пропсов обычного инпута
+type DefaultInputPropsType = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+type PropsType = DefaultInputPropsType & {
+  value: number;
+  min: number;
+  max: number;
+  formikProps: any;
 };
 
 const InputRange: React.FC<PropsType> = (props) => {
 
-  const rangeChange = (e: any) => {
-    let min = e.target.min;
-    let max = e.target.max;
-    let val = e.target.value;
-    const result = ((val - min) * 100) / (max - min);
-    e.target.style.backgroundSize = `${result}% 100%`;
-    console.log(e.target.value);
-  };
-  
+  let percentValue = ((props.value - props.min) / (props.max - props.min)) * 100;
+  percentValue = percentValue < 0 ? 0 : percentValue
+  percentValue = percentValue > 100 ? 100 : percentValue
+
   return (
-    <div className="Input-range" >
-      <input 
+    <div className="Input-range">
+      <input
         type="range"
-        onChange={rangeChange}
-        min="0"
-        max="100"
-        defaultValue="50"
+        min={props.min}
+        max={props.max}
+        style={{ backgroundSize: `${percentValue}% 100%` }}
+        {...props.formikProps}
       />
     </div>
   );

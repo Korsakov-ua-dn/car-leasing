@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Calculator from "../../containers/calculator";
+import FormLeasing from "../../containers/form-leasing";
 
 type PropsType = {};
 
@@ -10,7 +10,10 @@ const Main: React.FC<PropsType> = (props) => {
   }, [])
 
   return (
-    <Calculator/>
+    <div>
+      <h1>Рассчитайте стоимость автомобиля в лизинг</h1>
+      <FormLeasing/>
+    </div>
   );
 };
 

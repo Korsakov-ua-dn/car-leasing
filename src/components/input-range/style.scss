@@ -19,18 +19,18 @@
   width: 100%;
   border-top-left-radius: 4px;
   background-color: transparent;
-  background-image: -webkit-gradient(
-    linear,
-    50% 0%,
-    50% 100%,
-    color-stop(0%, #ff9514),
-    color-stop(100%, #ff9514)
-  );
+  // background-image: -webkit-gradient(
+  //   linear,
+  //   50% 0%,
+  //   50% 100%,
+  //   color-stop(0%, #ff9514),
+  //   color-stop(100%, #ff9514)
+  // );
   background-image: -webkit-linear-gradient(#ff9514, #ff9514);
   background-image: -moz-linear-gradient(#ff9514, #ff9514);
   background-image: -o-linear-gradient(#ff9514, #ff9514);
   background-image: linear-gradient(#ff9514, #ff9514);
-  background-size: 50% 100%;
+  // background-size: 50% 100%;
   background-repeat: no-repeat;
   cursor: pointer;
   -webkit-appearance: none;

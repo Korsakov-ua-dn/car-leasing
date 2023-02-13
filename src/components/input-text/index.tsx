@@ -20,18 +20,16 @@ const InputText: React.FC<PropsType> = ({
 }) => {
   const [editMode, setEditMode] = useState(false);
 
-  const { onChange } = formikProps.onChange;
+  // const { onChange } = formikProps.onChange;
   
   const callbacks = {
-    onClick: useCallback(() => setEditMode(prev => !prev), []),
-
+    onClick: useCallback(() => setEditMode(true), []),
     onBlur: useCallback(() => setEditMode(false), []),
-    
     onKeyDown: useCallback(
       (e: KeyboardEvent<HTMLInputElement>) => {
       e.key === 'Enter' && callbacks.onBlur();
-      onChange(e);
-    }, [onChange]),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []),
   }
 
   return (
