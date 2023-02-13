@@ -7,10 +7,18 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Regular';
   src: url('./assets/fonts/Gilroy-Regular.woff2') format('woff2'),
   url('./assets/fonts/Gilroy-Regular.woff') format('woff');
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy-Semibold';
+  src: url('./assets/fonts/Gilroy-Semibold.woff2') format('woff2'),
+  url('./assets/fonts/Gilroy-Semibold.woff') format('woff');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -24,7 +32,8 @@
   --color-active: cornflowerblue;
 
   --nekst: "Nekst", -apple-system, BlinkMacSystemFont, sans-serif;
-  --gilroy: "Gilroy", -apple-system, BlinkMacSystemFont, sans-serif;
+  --gilroy-regular: "Gilroy-Regular", -apple-system, BlinkMacSystemFont, sans-serif;
+  --gilroy-semibold: "Gilroy-Semibold", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-color-primary: #111111;
   --font-color-secondary: #333333;
   --font-color-grey: #575757;
