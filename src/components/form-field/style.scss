@@ -22,3 +22,8 @@
     margin-top: 12px;
   }
 }
+.Form-field.active {
+  & .Form-field__inputs-wrapper {
+    background-color: transparent;
+  }
+}

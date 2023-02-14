@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, DetailedHTMLProps, InputHTMLAttributes, useCallback, useState } from "react";
+import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
 import "./style.scss";
 
 // тип пропсов обычного инпута
@@ -10,39 +10,31 @@ type PropsType = DefaultInputPropsType & {
   view: string;
   mark: string;
   formikProps: any;
+  isActive: boolean;
 };
 
 const InputText: React.FC<PropsType> = ({
   view,
   mark,
   formikProps,
+  isActive,
   ...restProps
 }) => {
-  const [editMode, setEditMode] = useState(false);
 
-  // const { onChange } = formikProps.onChange;
-  
-  const callbacks = {
-    onClick: useCallback(() => setEditMode(true), []),
-    onBlur: useCallback(() => setEditMode(false), []),
-    onKeyDown: useCallback(
-      (e: KeyboardEvent<HTMLInputElement>) => {
-      e.key === 'Enter' && callbacks.onBlur();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []),
-  }
+  /* вытащил value для того что бы инпут стал неуправляемым
+     это позволит удобно редактировать данные пользователю */
+  const { value, ...rest } = formikProps;
 
   return (
-    <div className="Input-text" onClick={callbacks.onClick}>
+    <div className="Input-text">
       {
-        editMode 
+        isActive 
         ? <input
             type="text"
+            {...rest}
             {...restProps}
-            {...formikProps}
             autoFocus
-            onBlur={callbacks.onBlur}
-            onKeyDown={callbacks.onKeyDown}
+            defaultValue={value}
           />
         : <span className="Input-text__view">{view}</span>
       }
