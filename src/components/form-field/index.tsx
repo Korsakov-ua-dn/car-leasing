@@ -18,6 +18,7 @@ type PropsType = {
   fieldName: any;
   min: number;
   max: number;
+  disabled: boolean;
   setFieldValue: (
     field: string,
     value: any,
@@ -49,13 +50,17 @@ const FormField: React.FC<PropsType> = (props) => {
       //eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
   };
-
-  const ClassN = `${isActive ? "Form-field active" : "Form-field"}`;
+  
+  const ClassN = `
+    Form-field 
+    ${isActive ? "active" : ""}
+    ${props.disabled ? "disabled" : ""}
+  `;
 
   return (
     <div
       className={ClassN}
-      onClick={callbacks.onClick}
+      onClick={!props.disabled ? callbacks.onClick : () => {}}
       onBlur={callbacks.onBlur}
     >
       <label className="Form-field__lable">{props.lable}</label>
@@ -67,12 +72,14 @@ const FormField: React.FC<PropsType> = (props) => {
           isActive={isActive}
           onKeyDown={callbacks.onKeyDown}
           onChange={callbacks.onChange}
+          disabled={props.disabled}
         />
         <InputRange
           value={field.value}
           min={props.min}
           max={props.max}
           formikProps={field}
+          disabled={props.disabled}
         />
       </div>
     </div>

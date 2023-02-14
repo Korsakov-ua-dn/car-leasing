@@ -8,14 +8,24 @@ type DefaultInputPropsType = DetailedHTMLProps<
 >;
 type PropsType = DefaultInputPropsType & {
   children: string;
+  disabled: boolean;
   isSubmitting: boolean;
 };
 
-const Button: React.FC<PropsType> = ({ children, isSubmitting, ...restProps }) => {
-  // console.log(isSubmitting);
+const Button: React.FC<PropsType> = ({ 
+  children, 
+  disabled, 
+  isSubmitting, 
+  ...restProps 
+}) => {
+  const ClassN = ` ${disabled ? "Button disabled" : "Button"}`;
   
   return (
-    <button className="Button" {...restProps}>
+    <button
+      className={ClassN}
+      disabled={disabled}
+      {...restProps}
+    >
       {children}
     </button>
   );

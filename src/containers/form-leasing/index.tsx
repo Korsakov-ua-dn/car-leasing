@@ -21,11 +21,9 @@ const FormLeasing: React.FC<PropsType> = (props) => {
         initial: (420_000 / 3_300_000 * 100),
         term: 60,
       }}
-      onSubmit={(values: FormikState, { setSubmitting }: FormikHelpers<FormikState>) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 500);
+      onSubmit={(values: FormikState, { resetForm }: FormikHelpers<FormikState>) => {
+        resetForm();
+        alert(JSON.stringify(values, null, 2));
       }}
     >
       {({
@@ -45,6 +43,7 @@ const FormLeasing: React.FC<PropsType> = (props) => {
                 min={1_500_000}
                 max={10_000_000}
                 setFieldValue={setFieldValue}
+                disabled={isSubmitting}
               />
               <FormField
                 view={`${formatNumber(Math.ceil(values.price*values.initial/100))} ₽`}
@@ -54,6 +53,7 @@ const FormLeasing: React.FC<PropsType> = (props) => {
                 min={10}
                 max={60}
                 setFieldValue={setFieldValue}
+                disabled={isSubmitting}
               />
               <FormField
                 view={formatNumber(values.term)}
@@ -63,8 +63,13 @@ const FormLeasing: React.FC<PropsType> = (props) => {
                 min={6}
                 max={120}
                 setFieldValue={setFieldValue}
+                disabled={isSubmitting}
               />
-              <Button isSubmitting={isSubmitting} type="submit">
+              <Button
+                disabled={isSubmitting}
+                isSubmitting={isSubmitting}
+                type="submit"
+              >
                 Оставить заявку
               </Button>
             </>

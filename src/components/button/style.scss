@@ -10,3 +10,12 @@
   line-height: 36px;
   color: #FFFFFF;
 }
+.Button:hover {
+  background-color: var(--font-color-primary);
+}
+.Button:active {
+  opacity: 0.4;
+}
+.Button.disabled {
+  opacity: 0.4;
+}

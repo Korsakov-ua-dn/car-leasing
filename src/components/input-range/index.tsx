@@ -13,9 +13,15 @@ type PropsType = DefaultInputPropsType & {
   formikProps: any;
 };
 
-const InputRange: React.FC<PropsType> = (props) => {
+const InputRange: React.FC<PropsType> = ({  
+  value,
+  min,
+  max,
+  formikProps,
+  ...restProps
+}) => {
 
-  let percentValue = ((props.value - props.min) / (props.max - props.min)) * 100;
+  let percentValue = Math.ceil(((value - min) / (max - min)) * 100);
   percentValue = percentValue < 0 ? 0 : percentValue
   percentValue = percentValue > 100 ? 100 : percentValue
 
@@ -23,10 +29,11 @@ const InputRange: React.FC<PropsType> = (props) => {
     <div className="Input-range">
       <input
         type="range"
-        min={props.min}
-        max={props.max}
+        min={min}
+        max={max}
         style={{ backgroundSize: `${percentValue}% 100%` }}
-        {...props.formikProps}
+        {...formikProps}
+        {...restProps}
       />
     </div>
   );
