@@ -1,5 +1,6 @@
 {
   "name": "car-leasing",
+  "homepage": "https://car-leasing-theta.vercel.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
