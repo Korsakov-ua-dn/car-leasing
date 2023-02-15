@@ -1,0 +1,26 @@
+.Total-field {
+  & .Form__lable {
+    margin-bottom: 8px;
+  }
+
+  & .Total-field__value {
+    font-size: 54px;
+    line-height: 90%;
+  }
+
+  & .Total-field__value {
+    white-space: -moz-no-wrap; /* Firefox */
+    white-space: -o-no-wrap; /* Opera */
+    word-wrap: break-word; /* IE */
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Total-field {
+    & .Total-field__value {
+      font-size: 22px;
+      line-height: 20px;
+    }
+  }
+}

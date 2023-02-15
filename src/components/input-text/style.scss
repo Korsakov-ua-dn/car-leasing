@@ -11,7 +11,12 @@
     background-color: transparent;
     border: none;
     font-size: 30px;
+    line-height: 36px;
     color: var(--font-color-grey);
+  }
+
+  & input:focus {
+    outline: none;
   }
 
   & .Input-text__view,
@@ -19,5 +24,17 @@
     font-size: 30px;
     line-height: 36px;
     color: var(--font-color-grey);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Input-text {
+    & .Input-text__view,
+    & .Input-text__mark,
+    & input {
+      font-size: 22px;
+      line-height: 20px;
+      height: 20px;
+    }
   }
 }

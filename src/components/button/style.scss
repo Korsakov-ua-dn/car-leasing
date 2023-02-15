@@ -4,11 +4,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 24px;
   border-radius: 40px;
   background-color: var(--color-orange);
   font-size: 30px;
   line-height: 36px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .Button:hover {
   background-color: var(--font-color-primary);
@@ -18,4 +19,19 @@
 }
 .Button.disabled {
   opacity: 0.4;
+}
+
+@media screen and (max-width: 1119px) {
+  .Button {
+    padding: 0 52px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Button {
+    height: 60px;
+    margin: 0 auto;
+    font-size: 22px;
+    line-height: 20px;
+  }
 }

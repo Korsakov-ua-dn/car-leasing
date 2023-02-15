@@ -3,7 +3,7 @@ import "./style.scss";
 
 type PropsType = {
   onSubmit:  (e?: React.FormEvent<HTMLFormElement> | undefined) => void;
-  children: React.ReactElement
+  children: React.ReactNode | React.ReactNode[] | React.ReactElement;
 };
 
 const FormLeasing: React.FC<PropsType> = (props) => {

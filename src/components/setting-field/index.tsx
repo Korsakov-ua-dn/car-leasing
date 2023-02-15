@@ -26,7 +26,7 @@ type PropsType = {
   ) => void;
 };
 
-const FormField: React.FC<PropsType> = (props) => {
+const SettingField: React.FC<PropsType> = (props) => {
   const [field] = useField(props.fieldName);
   const [isActive, setActive] = useState(false);
 
@@ -52,7 +52,7 @@ const FormField: React.FC<PropsType> = (props) => {
   };
   
   const ClassN = `
-    Form-field 
+    Form__field Setting-field 
     ${isActive ? "active" : ""}
     ${props.disabled ? "disabled" : ""}
   `;
@@ -63,8 +63,8 @@ const FormField: React.FC<PropsType> = (props) => {
       onClick={!props.disabled ? callbacks.onClick : () => {}}
       onBlur={callbacks.onBlur}
     >
-      <label className="Form-field__lable">{props.lable}</label>
-      <div className="Form-field__inputs-wrapper">
+      <label className="Form__lable">{props.lable}</label>
+      <div className="Setting-field__inputs-wrapper">
         <InputText
           view={props.view}
           mark={props.mark}
@@ -86,4 +86,4 @@ const FormField: React.FC<PropsType> = (props) => {
   );
 };
 
-export default React.memo(FormField) as typeof FormField;
+export default React.memo(SettingField) as typeof SettingField;

@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from "react";
 import Layout from "../../components/layout";
 
 type PropsType = {
-  children: React.ReactElement
+  children: React.ReactNode | React.ReactNode[] | React.ReactElement
 };
 
 const MainLayout: React.FC<PropsType> = (props) => {
@@ -13,7 +13,7 @@ const MainLayout: React.FC<PropsType> = (props) => {
 
   return (
     <Layout>
-        { props.children }
+      { props.children }
     </Layout>
   );
 };

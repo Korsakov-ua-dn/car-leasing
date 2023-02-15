@@ -1,9 +1,13 @@
 import React from "react";
 import { Formik, FormikHelpers } from "formik";
 import Button from "../../components/button";
-import FormField from "../../components/form-field";
+import SettingField from "../../components/setting-field";
 import { formatNumber } from "../../utils/format-number";
 import Form from "../../components/form";
+import SettingsWrapper from "../../components/settings-wrapper";
+import TotalField from "../../components/total-field";
+import TotalWrapper from "../../components/total-wrapper";
+import Br from "../../components/br";
 
 type PropsType = {};
 
@@ -32,10 +36,13 @@ const FormLeasing: React.FC<PropsType> = (props) => {
         handleSubmit,
         setFieldValue,
       }) => {
+        // результат работы формулы отличается от значения в фигме
+        // console.log(   (3_300_000 - 420_000) * (0.05 * Math.pow((1 + 0.05), 60) / (Math.pow((1 + 0.05), 60) - 1))    );
+        
         return (
           <Form onSubmit={handleSubmit}>
-            <>
-              <FormField
+            <SettingsWrapper>
+              <SettingField
                 view={formatNumber(values.price)}
                 lable="Стоимость автомобиля"
                 mark="₽"
@@ -45,7 +52,7 @@ const FormLeasing: React.FC<PropsType> = (props) => {
                 setFieldValue={setFieldValue}
                 disabled={isSubmitting}
               />
-              <FormField
+              <SettingField
                 view={`${formatNumber(Math.ceil(values.price*values.initial/100))} ₽`}
                 lable="Первоначальный взнос"
                 mark={`${Math.ceil(values.initial)}%`}
@@ -55,7 +62,7 @@ const FormLeasing: React.FC<PropsType> = (props) => {
                 setFieldValue={setFieldValue}
                 disabled={isSubmitting}
               />
-              <FormField
+              <SettingField
                 view={formatNumber(values.term)}
                 lable="Срок лизинга"
                 mark="мес."
@@ -65,19 +72,47 @@ const FormLeasing: React.FC<PropsType> = (props) => {
                 setFieldValue={setFieldValue}
                 disabled={isSubmitting}
               />
+            </SettingsWrapper>
+            <TotalWrapper>
+              <TotalField
+                lable="Сумма договора лизинга"
+                value={`${
+                  formatNumber(
+                    Math.ceil( 
+                      values.price*values.initial/100 + values.term * 120_000
+                    )
+                  )
+                } ₽`}
+              />
+              <TotalField
+                lable="Ежемесячный платеж от"
+                value={`${
+                  formatNumber(
+                    Math.ceil( 
+                      (values.price - values.price*values.initial/100) 
+                      * (0.05 * Math.pow((1 + 0.05), values.term)) 
+                      / (Math.pow((1 + 0.05), values.term) - 1) 
+                    )
+                  )
+                } ₽`}
+              />
+              <Br/>
               <Button
                 disabled={isSubmitting}
                 isSubmitting={isSubmitting}
                 type="submit"
               >
-                Оставить заявку
+                Оставить&nbsp;заявку
               </Button>
-            </>
+            </TotalWrapper>
           </Form>
         );
+        
       }}
     </Formik>
   );
 };
 
 export default React.memo(FormLeasing) as typeof FormLeasing;
+
+// (Стоимость автомобиля - Первоначальный взнос) * (0.05 * Math.pow((1 + 0.05), Срок кредита в месяцах) / (Math.pow((1 + 0.05), Срок кредита в месяцах) - 1)

@@ -1,0 +1,19 @@
+.Title {
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 90%;
+  margin-bottom: 32px;
+}
+
+@media screen and (max-width: 1119px) {
+  .Title {
+    margin-bottom: 44px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Title {
+    font-size: 34px;
+    margin-bottom: 32px;
+  }
+}

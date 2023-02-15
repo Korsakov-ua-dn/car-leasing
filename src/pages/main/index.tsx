@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import Title from "../../components/title";
+import Wrapper from "../../components/wrapper";
 import FormLeasing from "../../containers/form-leasing";
 
 type PropsType = {};
@@ -10,10 +12,12 @@ const Main: React.FC<PropsType> = (props) => {
   }, [])
 
   return (
-    <div>
-      <h1>Рассчитайте стоимость автомобиля в лизинг</h1>
+    <Wrapper>
+      <Title>
+        Рассчитайте стоимость<br/> автомобиля в&nbsp;лизинг
+      </Title>
       <FormLeasing/>
-    </div>
+    </Wrapper>
   );
 };
 

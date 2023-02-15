@@ -1,0 +1,20 @@
+.Settings-wrapper {
+  display: flex;
+  width: 100%;
+  gap: 32px;
+}
+.Settings-wrapper > * {
+  flex: 0 0 calc(100% / 3 - 64px / 3);
+}
+
+@media screen and (max-width: 1119px) {
+  .Settings-wrapper {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Settings-wrapper {
+    gap: 16px;
+  }
+}

@@ -1,5 +1,28 @@
 .Form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Form__field {
+  padding-bottom: 7px;
+}
+
+.Form__lable {
+  display: inline-block;
+  font-family: var(--gilroy-regular);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 8px;
+  white-space: -moz-no-wrap; /* Firefox */
+  white-space: -o-no-wrap; /* Opera */
+  word-wrap: break-word; /* IE */
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 767px) {
+  .Form__lable {
+    font-size: 14px;
+  }
 }
