@@ -1,50 +1,32 @@
-# Getting Started with Create React App
+# "React(TS) - Калькулятор авто в лизинг"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Технологический стек:
 
-## Available Scripts
+React, TypeScript, SCSS, Formik.
 
-In the project directory, you can run:
+## Требования
 
-### `npm start`
+- Node.js >= 16
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Установка
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`npm install`
 
-### `npm test`
+## Запуск для разработки
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+В режиме разработки (development) приложение запускается командой:
 
-### `npm run build`
+`npm start`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Сборка для продакшена
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Для публикации проекта на сервере сначала выполняется сборка приложения командой:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`npm run build`
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-Для поля “Первоначальный взнос” - основным параметром сделал именно процентное значение а не сумму в руб.
-Т.к. при изменении значения поля “Стоимость автомобиля” может оказаться ПВ за пределами допустимых значений.
+## Комментирии к заданию
+1.  Для поля “Первоначальный взнос” - основным параметром сделал именно процентное значение а не сумму в руб.
+    Т.к. при изменении значения поля “Стоимость автомобиля” может оказаться “Первоначальный взнос” за пределами допустимых значений.
+    Такое поведение создает потенциальную возможность отправить не валидную заявку.
+2.  Результат работы формулы отличается от значения в фигме
+    (3_300_000 - 420_000) * (0.05 * Math.pow((1 + 0.05), 60) / (Math.pow((1 + 0.05), 60) - 1)) = 152_146 ₽
