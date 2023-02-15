@@ -5,3 +5,15 @@
   min-height: 100vh;
   height: 100%;
 }
+
+@media screen and (max-width: 1119px) {
+  .Wrapper {
+    padding: 64px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Wrapper {
+    padding-top: 44px;
+  }
+}

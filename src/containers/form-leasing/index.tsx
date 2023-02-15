@@ -2,12 +2,14 @@ import React from "react";
 import { Formik, FormikHelpers } from "formik";
 import Button from "../../components/button";
 import SettingField from "../../components/setting-field";
-import { formatNumber } from "../../utils/format-number";
 import Form from "../../components/form";
 import SettingsWrapper from "../../components/settings-wrapper";
 import TotalField from "../../components/total-field";
 import TotalWrapper from "../../components/total-wrapper";
 import Br from "../../components/br";
+import { formatNumber } from "../../utils/format-number";
+import { getMonthlyPay } from "../../utils/get-monthly-pay";
+import { getContractTotal } from "../../utils/get-contract-total";
 
 type PropsType = {};
 
@@ -25,7 +27,11 @@ const FormLeasing: React.FC<PropsType> = (props) => {
         initial: (420_000 / 3_300_000 * 100),
         term: 60,
       }}
-      onSubmit={(values: FormikState, { resetForm }: FormikHelpers<FormikState>) => {
+      onSubmit={
+        (
+          values: FormikState, 
+          { resetForm }: FormikHelpers<FormikState>
+        ) => {
         resetForm();
         alert(JSON.stringify(values, null, 2));
       }}
@@ -38,7 +44,11 @@ const FormLeasing: React.FC<PropsType> = (props) => {
       }) => {
         // результат работы формулы отличается от значения в фигме
         // console.log(   (3_300_000 - 420_000) * (0.05 * Math.pow((1 + 0.05), 60) / (Math.pow((1 + 0.05), 60) - 1))    );
-        
+
+        const { price, initial, term } = values;
+        const monthlyPay = getMonthlyPay(price, initial, term);
+        const contractTotal = getContractTotal(price, initial, term, monthlyPay)
+
         return (
           <Form onSubmit={handleSubmit}>
             <SettingsWrapper>
@@ -53,7 +63,9 @@ const FormLeasing: React.FC<PropsType> = (props) => {
                 disabled={isSubmitting}
               />
               <SettingField
-                view={`${formatNumber(Math.ceil(values.price*values.initial/100))} ₽`}
+                view={`${formatNumber(
+                  Math.ceil(values.price*values.initial/100)
+                )} ₽`}
                 lable="Первоначальный взнос"
                 mark={`${Math.ceil(values.initial)}%`}
                 fieldName="initial"
@@ -76,25 +88,11 @@ const FormLeasing: React.FC<PropsType> = (props) => {
             <TotalWrapper>
               <TotalField
                 lable="Сумма договора лизинга"
-                value={`${
-                  formatNumber(
-                    Math.ceil( 
-                      values.price*values.initial/100 + values.term * 120_000
-                    )
-                  )
-                } ₽`}
+                value={`${formatNumber(contractTotal)} ₽`}
               />
               <TotalField
                 lable="Ежемесячный платеж от"
-                value={`${
-                  formatNumber(
-                    Math.ceil( 
-                      (values.price - values.price*values.initial/100) 
-                      * (0.05 * Math.pow((1 + 0.05), values.term)) 
-                      / (Math.pow((1 + 0.05), values.term) - 1) 
-                    )
-                  )
-                } ₽`}
+                value={`${ formatNumber(monthlyPay)} ₽`}
               />
               <Br/>
               <Button
@@ -114,5 +112,3 @@ const FormLeasing: React.FC<PropsType> = (props) => {
 };
 
 export default React.memo(FormLeasing) as typeof FormLeasing;
-
-// (Стоимость автомобиля - Первоначальный взнос) * (0.05 * Math.pow((1 + 0.05), Срок кредита в месяцах) / (Math.pow((1 + 0.05), Срок кредита в месяцах) - 1)
