@@ -88,11 +88,11 @@ const FormLeasing: React.FC<PropsType> = (props) => {
             <TotalWrapper>
               <TotalField
                 lable="Сумма договора лизинга"
-                value={`${formatNumber(contractTotal)} ₽`}
+                value={`${formatNumber(contractTotal)} `}
               />
               <TotalField
                 lable="Ежемесячный платеж от"
-                value={`${ formatNumber(monthlyPay)} ₽`}
+                value={`${ formatNumber(monthlyPay)} `}
               />
               <Br/>
               <Button

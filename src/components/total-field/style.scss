@@ -14,6 +14,14 @@
     word-wrap: break-word; /* IE */
     white-space: nowrap;
   }
+
+  & .Total-field__value::after {
+    content: "\20BD";
+    position: relative;
+    display: inline-block;
+    top: -6px;
+  }
+
 }
 
 @media screen and (max-width: 767px) {
