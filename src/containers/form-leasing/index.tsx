@@ -65,7 +65,7 @@ const FormLeasing: React.FC<PropsType> = (props) => {
               <SettingField
                 view={`${formatNumber(
                   Math.ceil(values.price*values.initial/100)
-                )} ₽`}
+                )} `}
                 lable="Первоначальный взнос"
                 mark={`${Math.ceil(values.initial)}%`}
                 fieldName="initial"
@@ -73,6 +73,7 @@ const FormLeasing: React.FC<PropsType> = (props) => {
                 max={60}
                 setFieldValue={setFieldValue}
                 disabled={isSubmitting}
+                mod="initial"
               />
               <SettingField
                 view={formatNumber(values.term)}

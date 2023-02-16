@@ -19,6 +19,7 @@ type PropsType = {
   min: number;
   max: number;
   disabled: boolean;
+  mod?: string;
   setFieldValue: (
     field: string,
     value: any,
@@ -52,7 +53,8 @@ const SettingField: React.FC<PropsType> = (props) => {
   };
   
   const ClassN = `
-    Form__field Setting-field 
+    Form__field Setting-field
+    ${props.mod ? "Setting-field_" + props.mod : ""}
     ${isActive ? "active" : ""}
     ${props.disabled ? "disabled" : ""}
   `;

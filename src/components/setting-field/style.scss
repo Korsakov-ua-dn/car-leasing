@@ -28,6 +28,15 @@
   opacity: 0.4;
 }
 
+.Setting-field_initial {
+  & .Input-text__view:after {
+    content: "\20BD";
+    position: relative;
+    display: inline-block;
+    top: -4px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .Setting-field {
     & .Form__lable {
@@ -40,6 +49,12 @@
 
     & .Input-range {
       margin-top: 20px;
+    }
+  }
+
+  .Setting-field_initial {
+    & .Input-text__view:after {
+      top: -2px;
     }
   }
 }
