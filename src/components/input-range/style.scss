@@ -1,3 +1,5 @@
+@import "../../scss/variables.scss";
+
 .Input-range {
   position: relative;
 }
@@ -25,13 +27,13 @@
     linear,
     50% 0%,
     50% 100%,
-    color-stop(0%, #ff9514),
-    color-stop(100%, #ff9514)
+    color-stop(0%, $color-orange),
+    color-stop(100%, $color-orange)
   );
-  background-image: -webkit-linear-gradient(#ff9514, #ff9514);
-  background-image: -moz-linear-gradient(#ff9514, #ff9514);
-  background-image: -o-linear-gradient(#ff9514, #ff9514);
-  background-image: linear-gradient(#ff9514, #ff9514);
+  background-image: -webkit-linear-gradient($color-orange, $color-orange);
+  background-image: -moz-linear-gradient($color-orange, $color-orange);
+  background-image: -o-linear-gradient($color-orange, $color-orange);
+  background-image: linear-gradient($color-orange, $color-orange);
   // background-size: 50% 100%;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -58,7 +60,7 @@
     width: 20px;
     height: 20px;
     border: 0;
-    background: #ff9514;
+    background: $color-orange;
     border-radius: 100%;
     -webkit-appearance: none;
   }
@@ -67,7 +69,7 @@
     width: 20px;
     height: 20px;
     border: 0;
-    background: #ff9514;
+    background: $color-orange;
     border-radius: 100%;
   }
 }

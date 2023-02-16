@@ -1,3 +1,6 @@
+@import "../../scss/mixines.scss";
+@import "../../scss/variables.scss";
+
 .Form {
   display: flex;
   flex-direction: column;
@@ -10,15 +13,12 @@
 
 .Form__lable {
   display: inline-block;
-  font-family: var(--gilroy-regular);
+  font-family: $gilroy-regular;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 8px;
-  white-space: -moz-no-wrap; /* Firefox */
-  white-space: -o-no-wrap; /* Opera */
-  word-wrap: break-word; /* IE */
-  white-space: nowrap;
+  @include notBreakWord();
 }
 
 @media screen and (max-width: 767px) {

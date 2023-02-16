@@ -1,0 +1,6 @@
+@mixin notBreakWord {
+  white-space: -moz-no-wrap; /* Firefox */
+  white-space: -o-no-wrap; /* Opera */
+  word-wrap: break-word; /* IE */
+  white-space: nowrap;
+}

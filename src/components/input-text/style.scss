@@ -1,3 +1,5 @@
+@import "../../scss/variables.scss";
+
 .Input-text {
   width: 100%;
   display: flex;
@@ -12,7 +14,7 @@
     border: none;
     font-size: 30px;
     line-height: 36px;
-    color: var(--font-color-grey);
+    color: $font-color-grey;
   }
 
   & input:focus {
@@ -23,7 +25,7 @@
   & .Input-text__mark {
     font-size: 30px;
     line-height: 36px;
-    color: var(--font-color-grey);
+    color: $font-color-grey;
   }
 }
 

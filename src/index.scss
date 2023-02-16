@@ -14,30 +14,7 @@
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: 'Gilroy-Semibold';
-  src: url('./assets/fonts/Gilroy-Semibold.woff2') format('woff2'),
-  url('./assets/fonts/Gilroy-Semibold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-:root {
-  --background: #FFFFFF;
-
-  --color-orange: #FF9514;;
-  --color-grey: #F3F3F4;
-  --color-light-yellow: #fffeee;
-  --color-active: cornflowerblue;
-
-  --nekst: "Nekst", -apple-system, BlinkMacSystemFont, sans-serif;
-  --gilroy-regular: "Gilroy-Regular", -apple-system, BlinkMacSystemFont, sans-serif;
-  --gilroy-semibold: "Gilroy-Semibold", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-color-primary: #111111;
-  --font-color-secondary: #333333;
-  --font-color-grey: #575757;
-}
+@import "./scss/variables.scss";
 
 *,
 *::after,
@@ -53,13 +30,13 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  font-family: var(--nekst);
+  font-family: $nekst;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-style: normal;
   font-weight: 900;
-  color: var(--font-color-secondary);
-  background-color: var(--background);
+  color: $font-color-secondary;
+  background-color: $background;
 }
 
 ul {
@@ -90,6 +67,6 @@ span,
 textarea,
 label,
 input {
-  font-family: var(--nekst);
-  color: var(--font-color-secondary);
+  font-family: $nekst;
+  color: $font-color-secondary;
 }

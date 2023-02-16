@@ -1,3 +1,5 @@
+@import "../../scss/variables.scss";
+
 .Setting-field {
   & .Form__lable {
     margin-bottom: 24px;
@@ -8,8 +10,8 @@
     height: 68px;
     width: 100%;
     padding: 16px 24px;
-    background-color: var(--color-grey);
-    border: 2px solid var(--color-grey);
+    background-color: $color-grey;
+    border: 2px solid $color-grey;
     border-radius: 16px;
   }
 

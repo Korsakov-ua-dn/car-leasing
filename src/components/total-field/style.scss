@@ -1,3 +1,5 @@
+@import "../../scss/mixines.scss";
+
 .Total-field {
   & .Form__lable {
     margin-bottom: 8px;
@@ -9,10 +11,7 @@
   }
 
   & .Total-field__value {
-    white-space: -moz-no-wrap; /* Firefox */
-    white-space: -o-no-wrap; /* Opera */
-    word-wrap: break-word; /* IE */
-    white-space: nowrap;
+    @include notBreakWord();
   }
 
   & .Total-field__value::after {
