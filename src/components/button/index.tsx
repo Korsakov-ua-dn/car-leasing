@@ -1,4 +1,5 @@
 import React, { DetailedHTMLProps, ButtonHTMLAttributes } from "react";
+import Preloader from "../spinner";
 import "./style.scss";
 
 // тип пропсов обычного button
@@ -26,7 +27,7 @@ const Button: React.FC<PropsType> = ({
       disabled={disabled}
       {...restProps}
     >
-      {children}
+      {isSubmitting ? <Preloader /> : children}
     </button>
   );
 };
